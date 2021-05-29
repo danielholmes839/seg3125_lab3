@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { OrderProvider } from "context";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 import "./css/custom.css";
 import "./css/tailwind.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <OrderProvider>
+      <App />
+    </OrderProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

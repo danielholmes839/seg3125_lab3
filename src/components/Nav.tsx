@@ -1,5 +1,4 @@
 export enum View {
-  CLIENT,
   PRODUCTS,
   CART,
 }
@@ -30,12 +29,6 @@ export const Nav: React.FC<Props> = ({ setView, current }) => {
       <NavButton
         current={current}
         setView={setView}
-        to={View.CLIENT}
-        text="Client"
-      />
-      <NavButton
-        current={current}
-        setView={setView}
         to={View.PRODUCTS}
         text="Products"
       />
@@ -44,7 +37,7 @@ export const Nav: React.FC<Props> = ({ setView, current }) => {
         current={current}
         setView={setView}
         to={View.CART}
-        text="Cart"
+        text="Checkout"
       />
     </div>
   );

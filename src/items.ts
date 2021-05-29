@@ -9,15 +9,19 @@ export enum Property {
 export type Item = {
   name: string;
   price: number;
+  save?: number;
   organic?: boolean;
   lactose?: boolean;
   nuts?: boolean;
+  kids?: boolean;
 };
 
 const items: Item[] = [
   {
     name: "Apple",
     price: 1,
+    save: 1,
+    discount: 25,
     organic: true,
   },
   {
@@ -41,6 +45,7 @@ const items: Item[] = [
     name: "Ice Cream",
     price: 10,
     lactose: true,
+    save: 2,
   },
   {
     name: "Peanut Butter",
@@ -60,10 +65,28 @@ const items: Item[] = [
   {
     name: "Chicken Nuggets",
     price: 4,
+    save: 1,
   },
   {
     name: "French Fries",
     price: 2,
+    save: 1,
+  },
+  {
+    name: "Diapers",
+    save: 5,
+    price: 30,
+    kids: true,
+  },
+  {
+    name: "Dinosaur Chicken Nuggets",
+    price: 3,
+    kids: true,
+  },
+  {
+    name: "Star Wars Chicken Nuggets",
+    price: 3,
+    kids: true,
   },
 ].sort((a, b) => a.price - b.price);
 

@@ -1,18 +1,33 @@
+import React, { useEffect, useState } from "react";
+import { Filter, useOrder } from "context";
+
 type Props = {
   text: string;
-  checked: boolean;
-  setter: React.Dispatch<boolean>;
+  filter: Filter;
 };
 
-export const Checkbox: React.FC<Props> = ({ text, checked, setter }) => {
+export const Checkbox: React.FC<Props> = ({ text, filter }) => {
+  const [checked, setChecked] = useState(false);
+  const { filterAdd, filterRemove } = useOrder();
+
+  useEffect(() => {
+    console.log("checked", filter, checked);
+    if (!checked) {
+      filterRemove(filter);
+    } else {
+      filterAdd(filter);
+    }
+  }, [checked]);
   return (
-    <div>
+    <div className="inline mr-5">
       <input
         type="checkbox"
-        className="align-middle"
+        className="align-middle mr-2"
         checked={checked}
-        onChange={(e) => setter(e.target.checked)}
-      />{" "}
+        onChange={(e) => {
+          setChecked(e.target.checked);
+        }}
+      />
       <span className="align-middle my-0">{text}</span>
     </div>
   );
