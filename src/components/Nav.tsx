@@ -24,7 +24,7 @@ export const Nav: React.FC<Props> = ({ setView, current }) => {
   return (
     <div>
       {current === View.CART && (
-        <NavButton setView={setView} to={View.PRODUCTS} text="< Items" />
+        <NavButton setView={setView} to={View.PRODUCTS} text="< Products" />
       )}
       {current === View.PRODUCTS && (
         <NavButton setView={setView} to={View.CART} text="Checkout >" />
