@@ -5,7 +5,8 @@ export type Filter =
   | "LACTOSE_INTOLERANT"
   | "NUT_ALLERGY"
   | "PREFER_ORGANIC"
-  | "KID_ITEMS";
+  | "KID_ITEMS"
+  | "DISCOUNT";
 
 export type Order = {
   items: Item[];
@@ -60,6 +61,8 @@ export const OrderProvider: React.FC = ({ children }) => {
     } else if (filters.includes("PREFER_ORGANIC") && !item.organic) {
       return true;
     } else if (filters.includes("KID_ITEMS") && !item.kids) {
+      return true;
+    } else if (filters.includes("DISCOUNT") && item.save == undefined) {
       return true;
     }
 

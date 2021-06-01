@@ -7,17 +7,18 @@ type Props = {
 };
 
 export const Checkbox: React.FC<Props> = ({ text, filter }) => {
-  const [checked, setChecked] = useState(false);
+  const { filters } = useOrder();
+  const [checked, setChecked] = useState(filters.includes(filter));
   const { filterAdd, filterRemove } = useOrder();
 
   useEffect(() => {
-    console.log("checked", filter, checked);
     if (!checked) {
       filterRemove(filter);
     } else {
       filterAdd(filter);
     }
   }, [checked]);
+  
   return (
     <div className="inline mr-5">
       <input

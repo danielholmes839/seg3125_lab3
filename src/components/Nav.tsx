@@ -5,17 +5,14 @@ export enum View {
 
 type Props = { setView: React.Dispatch<View>; current: View };
 
-const NavButton: React.FC<Props & { to: View; text: string }> = ({
-  setView,
-  current,
-  to,
-  text,
-}) => {
-  const style = current === to ? "underline" : "";
-
+const NavButton: React.FC<{
+  setView: React.Dispatch<View>;
+  to: View;
+  text: string;
+}> = ({ setView, to, text }) => {
   return (
     <button
-      className={`text-blue-500 focus:outline-none mr-4 ${style}`}
+      className={`py-1 px-3 mr-3 text-xs rounded-sm border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold focus:outline-none`}
       onClick={() => setView(to)}
     >
       {text}
@@ -25,20 +22,13 @@ const NavButton: React.FC<Props & { to: View; text: string }> = ({
 
 export const Nav: React.FC<Props> = ({ setView, current }) => {
   return (
-    <div className="mb-5">
-      <NavButton
-        current={current}
-        setView={setView}
-        to={View.PRODUCTS}
-        text="Products"
-      />
-
-      <NavButton
-        current={current}
-        setView={setView}
-        to={View.CART}
-        text="Checkout"
-      />
+    <div>
+      {current === View.CART && (
+        <NavButton setView={setView} to={View.PRODUCTS} text="< Items" />
+      )}
+      {current === View.PRODUCTS && (
+        <NavButton setView={setView} to={View.CART} text="Checkout >" />
+      )}
     </div>
   );
 };
